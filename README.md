@@ -30,4 +30,12 @@ Provide test data to exercise the application.Constraints
 
 The toy robot must not fall off the table during movement. This alsoincludes the initial placement of the toy robot.
 
-Any move that would cause the robot to fall must be ignored.
+Any move that would cause the robot to fall must be ignored. 
+
+
+### To add: 
+
+1. Help command 
+2. CI GHA 
+3. Clean up/refactor instructions 
+4. Maven build and test steps 
