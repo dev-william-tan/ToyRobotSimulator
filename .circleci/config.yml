@@ -33,6 +33,3 @@ workflows:
           type: approval
           requires:
             - test
-      - deploy:
-          requires:
-            - hold
