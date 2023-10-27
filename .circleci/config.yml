@@ -29,3 +29,10 @@ workflows:
     jobs:
       - build
       - test
+      - hold:
+          type: approval
+          requires:
+            - test
+      - deploy:
+          requires:
+            - hold
