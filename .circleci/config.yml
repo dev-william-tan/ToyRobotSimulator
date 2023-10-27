@@ -10,12 +10,22 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: echo "this is the build job"
-      - run: mvn package
+      - run:
+          name: Build Step
+          command: ./mvnw clean package
+  test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: Test Step
+          command: ./mvnw test
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  build-and-test:
     jobs:
-      - say-hello
+      - build
+      - test
