@@ -14,6 +14,8 @@ jobs:
           name: Build Step
           command: ./mvnw clean package
   test:
+    docker:
+      - image: cimg/openjdk:17.0.8
     steps:
       - checkout
       - run:
