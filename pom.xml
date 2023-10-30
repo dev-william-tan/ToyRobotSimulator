@@ -20,6 +20,21 @@
       <version>5.9.2</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs</artifactId>
+      <version>4.8.0</version>
+    </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>4.4.2</version>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

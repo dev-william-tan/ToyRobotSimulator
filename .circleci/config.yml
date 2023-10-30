@@ -4,9 +4,6 @@ version: 2.1
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
-orbs:
-  github-super-linter: circleci/github-super-linter@1.0.1
-
 jobs:
   build:
     docker:
@@ -36,6 +33,3 @@ workflows:
           type: approval
           requires:
             - test
-  lint-code:
-    jobs:
-      - github-super-linter/lint
