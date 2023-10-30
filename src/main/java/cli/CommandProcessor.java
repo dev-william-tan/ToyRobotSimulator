@@ -20,7 +20,7 @@ public class CommandProcessor {
     Position newPosition = robot.getDirection().moveForward(robot.getPosition());
     if (!grid.isValidPosition(newPosition)) throw new IllegalArgumentException("The robot is gonna fall off the table! Overriding command");
     robot.setPosition(newPosition);
-    robot.currentPosition();
+    System.out.println("The robot has moved! New position: " + robot.getPositionAndDirection());
   }
 
   public void executePlace(Position startPosition, Direction startDirection) {
@@ -30,22 +30,23 @@ public class CommandProcessor {
     startDirection = (startDirection == null) ? Direction.NORTH : startDirection;
 
     grid.placeRobot(startPosition, startDirection);
-    robot.currentPosition();
+    System.out.println("The robot has been placed on the grid and it's ready to move!");
   }
 
   public void executeLeft() {
     Direction newDirection = robot.getDirection().turnLeft();
     robot.setDirection(newDirection);
-    robot.currentPosition();
+    System.out.println("The Robot has turned! It's now facing: " + newDirection);
   }
 
   public void executeRight() {
     Direction newDirection = robot.getDirection().turnRight();
     robot.setDirection(newDirection);
-    robot.currentPosition();
+    System.out.println("The Robot has turned! It's now facing: " + newDirection);
   }
 
   public void executeReport() {
-    robot.currentPosition();
+    String currentPositionAndDirection = robot.getPositionAndDirection();
+    System.out.println("Robot's current positon and direction: " + currentPositionAndDirection);
   }
 }

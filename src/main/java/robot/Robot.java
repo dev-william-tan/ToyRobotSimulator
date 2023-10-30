@@ -24,9 +24,8 @@ public class Robot {
     return position;
   }
 
-  public void currentPosition() {
-    System.out.print("Robot is on coordinates: (" + position.getX() + ", " + position.getY() + ")" + "\n"
-        + "facing: " + getDirection() + "\n");
+  public String getPositionAndDirection() {
+    return position.getX() + "," + position.getY() + "," + direction.name();
   }
 
 }
