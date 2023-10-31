@@ -1,6 +1,7 @@
 package cli;
 
 import actions.Position;
+import exceptions.RobotOutOfBoundsException;
 import grid.Grid;
 import robot.Robot;
 import actions.Direction;
@@ -18,7 +19,7 @@ public class CommandProcessor {
   public void executeMove() {
     //Move it forward towards the facing direction
     Position newPosition = robot.getDirection().moveForward(robot.getPosition());
-    if (!grid.isValidPosition(newPosition)) throw new IllegalArgumentException("The robot is gonna fall off the table! Overriding command");
+    if (!grid.isValidPosition(newPosition)) throw new RobotOutOfBoundsException();
     robot.setPosition(newPosition);
     System.out.println("The robot has moved! New position: " + robot.getPositionAndDirection());
   }
@@ -45,8 +46,8 @@ public class CommandProcessor {
     System.out.println("The Robot has turned! It's now facing: " + newDirection);
   }
 
-  public void executeReport() {
+  public String executeReport() {
     String currentPositionAndDirection = robot.getPositionAndDirection();
-    System.out.println("Robot's current positon and direction: " + currentPositionAndDirection);
+    return "Robot's current position and direction: " + currentPositionAndDirection;
   }
 }

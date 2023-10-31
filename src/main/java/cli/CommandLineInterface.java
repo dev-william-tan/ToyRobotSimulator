@@ -37,7 +37,7 @@ public class CommandLineInterface {
           case "MOVE" -> command.executeMove();
           case "LEFT" -> command.executeLeft();
           case "RIGHT" -> command.executeRight();
-          case "REPORT" -> command.executeReport();
+          case "REPORT" -> System.out.println(command.executeReport());
           default -> System.out.println("Invalid command. Please try again.");
         }
       } catch (IllegalArgumentException e) {

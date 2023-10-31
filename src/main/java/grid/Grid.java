@@ -2,6 +2,9 @@ package grid;
 
 import actions.Position;
 
+import exceptions.NoDirectionException;
+import exceptions.NullCoordinatesException;
+import exceptions.PositionOutOfBoundsException;
 import robot.Robot;
 import actions.Direction;
 
@@ -22,11 +25,11 @@ public class Grid {
   }
 
   public void placeRobot(Position position, Direction direction) {
-    if (position == null) throw new IllegalArgumentException("No X or Y coordinates provided");
+    if (position == null) throw new NullCoordinatesException();
 
-    if (!isValidPosition(position)) throw new IllegalArgumentException("Starting position is out of grid bounds");
+    if (!isValidPosition(position)) throw new PositionOutOfBoundsException();
 
-    if (direction == null) throw new IllegalArgumentException("No direction provided");
+    if (direction == null) throw new NoDirectionException();
 
     robot.setPosition(position);
     robot.setDirection(direction);
