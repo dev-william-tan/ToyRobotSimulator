@@ -19,7 +19,7 @@ public class CommandLineInterface {
     System.out.println("To move the robot around and turning,use the commands.");
 
     while (true) {
-      System.out.println("Enter a command (PLACE, MOVE, LEFT, RIGHT, REPORT, or EXIT):");
+      System.out.println("Enter a command (PLACE, MOVE, LEFT, RIGHT, REPORT, HELP, or EXIT):");
       String input = scanner.nextLine().trim().toUpperCase();
 
       if (input.equals("EXIT")) {
@@ -38,6 +38,7 @@ public class CommandLineInterface {
           case "LEFT" -> command.executeLeft();
           case "RIGHT" -> command.executeRight();
           case "REPORT" -> System.out.println(command.executeReport());
+          case "HELP" -> command.executeHelp();
           default -> System.out.println("Invalid command. Please try again.");
         }
       } catch (IllegalArgumentException e) {

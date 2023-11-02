@@ -35,7 +35,5 @@ Any move that would cause the robot to fall must be ignored.
 
 ### To add: 
 
-1. Help command
-3. Clean up/refactor instructions 
-4. Maven build and test steps 
-5. Error checks, make sure robot is placed first
+1. Clean up/refactor instructions
+2. Error checks, make sure robot is placed first

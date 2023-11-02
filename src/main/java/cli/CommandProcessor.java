@@ -1,5 +1,6 @@
 package cli;
 
+import actions.HelpCommand;
 import actions.Position;
 import exceptions.RobotOutOfBoundsException;
 import grid.Grid;
@@ -49,5 +50,10 @@ public class CommandProcessor {
   public String executeReport() {
     String currentPositionAndDirection = robot.getPositionAndDirection();
     return "Robot's current position and direction: " + currentPositionAndDirection;
+  }
+
+  public void executeHelp() {
+    HelpCommand helpCommand = new HelpCommand();
+    System.out.println(helpCommand.help());
   }
 }
