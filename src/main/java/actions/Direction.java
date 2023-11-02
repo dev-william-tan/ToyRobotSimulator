@@ -31,8 +31,8 @@ public enum Direction {
   }
 
   public Position moveForward(Position position) {
-    int newX = position.getX() + associatedPosition.getX();
-    int newY = position.getY() + associatedPosition.getY();
+    int newX = position.x() + associatedPosition.x();
+    int newY = position.y() + associatedPosition.y();
     return new Position(newX, newY);
   }
 

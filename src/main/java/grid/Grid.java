@@ -10,9 +10,6 @@ import actions.Direction;
 
 public class Grid {
 
-  private final int GRID_HEIGHT = 5;
-  private final int GRID_WIDTH = 5;
-
   private final Robot robot;
 
   public Grid(Robot robot) {
@@ -20,6 +17,8 @@ public class Grid {
   }
 
   public boolean isValidPosition(Position position) {
+    int GRID_WIDTH = 5;
+    int GRID_HEIGHT = 5;
     return position.getX() >= 0 && position.getX() < GRID_WIDTH
         && position.getY() >= 0 && position.getY() < GRID_HEIGHT;
   }

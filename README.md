@@ -35,5 +35,6 @@ Any move that would cause the robot to fall must be ignored.
 
 ### To add: 
 
-1. Clean up/refactor instructions
-2. Error checks, make sure robot is placed first
+1. Further SRP refactoring
+2. Clean up/refactor instructions
+3. Error checks, make sure robot is placed first

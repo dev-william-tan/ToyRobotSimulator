@@ -8,6 +8,8 @@ public class Robot {
   private Position position;
   private Direction direction;
 
+  public Robot() {}
+
   public void setPosition(Position position) {
     this.position = position;
   }
