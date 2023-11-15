@@ -38,3 +38,5 @@ Any move that would cause the robot to fall must be ignored.
 1. Further SRP refactoring
 2. Clean up/refactor instructions
 3. Error checks, make sure robot is placed first
+4. Use States, update commands into HashMaps
+5. Update CommandProcessor to Interface

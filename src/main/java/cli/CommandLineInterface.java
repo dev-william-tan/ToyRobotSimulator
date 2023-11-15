@@ -37,7 +37,7 @@ public class CommandLineInterface {
           case "MOVE" -> command.executeMove();
           case "LEFT" -> command.executeLeft();
           case "RIGHT" -> command.executeRight();
-          case "REPORT" -> System.out.println(command.executeReport());
+          case "REPORT" -> command.executeReport();
           case "HELP" -> command.executeHelp();
           default -> System.out.println("Invalid command. Please try again.");
         }

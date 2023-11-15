@@ -12,22 +12,29 @@ public enum Direction {
     this.associatedPosition = position;
   }
 
+  private Direction left;
+  private Direction right;
+
+  static {
+    NORTH.left = WEST;
+    WEST.left = SOUTH;
+    SOUTH.left = EAST;
+    EAST.left = NORTH;
+  }
+
+  static {
+    NORTH.right = EAST;
+    EAST.right = SOUTH;
+    SOUTH.right = WEST;
+    WEST.right = NORTH;
+  }
+
   public Direction turnLeft() {
-    return switch (this) {
-      case NORTH -> WEST;
-      case EAST -> NORTH;
-      case WEST -> SOUTH;
-      case SOUTH -> EAST;
-    };
+    return left;
   }
 
   public Direction turnRight() {
-    return switch (this) {
-      case NORTH -> EAST;
-      case EAST -> SOUTH;
-      case WEST -> NORTH;
-      case SOUTH -> WEST;
-    };
+    return right;
   }
 
   public Position moveForward(Position position) {

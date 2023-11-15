@@ -1,8 +1,12 @@
 package cli;
 
-import actions.HelpCommand;
+import commands.HelpCommand;
 import actions.Position;
-import exceptions.RobotOutOfBoundsException;
+import commands.MoveCommand;
+import commands.PlaceCommand;
+import commands.ReportCommand;
+import commands.TurnLeftCommand;
+import commands.TurnRightCommand;
 import grid.Grid;
 import robot.Robot;
 import actions.Direction;
@@ -19,10 +23,8 @@ public class CommandProcessor {
 
   public void executeMove() {
     //Move it forward towards the facing direction
-    Position newPosition = robot.getDirection().moveForward(robot.getPosition());
-    if (!grid.isValidPosition(newPosition)) throw new RobotOutOfBoundsException();
-    robot.setPosition(newPosition);
-    System.out.println("The robot has moved! New position: " + robot.getPositionAndDirection());
+    MoveCommand moveCommand = new MoveCommand(robot, grid);
+    moveCommand.execute();
   }
 
   public void executePlace(Position startPosition, Direction startDirection) {
@@ -30,30 +32,28 @@ public class CommandProcessor {
     //it will be defaulted to (0, 0) and North facing
     startPosition = (startPosition == null) ? new Position(0, 0) : startPosition;
     startDirection = (startDirection == null) ? Direction.NORTH : startDirection;
-
-    grid.placeRobot(startPosition, startDirection);
+    PlaceCommand placeCommand = new PlaceCommand(robot, startPosition, startDirection);
+    placeCommand.execute();
     System.out.println("The robot has been placed on the grid and it's ready to move!");
   }
 
   public void executeLeft() {
-    Direction newDirection = robot.getDirection().turnLeft();
-    robot.setDirection(newDirection);
-    System.out.println("The Robot has turned! It's now facing: " + newDirection);
+    TurnLeftCommand leftCommand = new TurnLeftCommand(robot);
+    leftCommand.execute();
   }
 
   public void executeRight() {
-    Direction newDirection = robot.getDirection().turnRight();
-    robot.setDirection(newDirection);
-    System.out.println("The Robot has turned! It's now facing: " + newDirection);
+    TurnRightCommand rightCommand = new TurnRightCommand(robot);
+    rightCommand.execute();
   }
 
-  public String executeReport() {
-    String currentPositionAndDirection = robot.getPositionAndDirection();
-    return "Robot's current position and direction: " + currentPositionAndDirection;
-  }
+  public void executeReport() {
+    ReportCommand reportCommand = new ReportCommand(robot);
+    reportCommand.execute();
+ }
 
   public void executeHelp() {
     HelpCommand helpCommand = new HelpCommand();
-    System.out.println(helpCommand.help());
+    helpCommand.execute();
   }
 }

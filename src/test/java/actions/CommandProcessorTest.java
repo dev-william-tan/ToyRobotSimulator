@@ -71,18 +71,6 @@ public class CommandProcessorTest {
 
       assertEquals(expected, robot.getPositionAndDirection());
     }
-
-    @Test
-    public void testExecuteReport() {
-      Position startPosition = new Position(0,0);
-      Direction startDirection = Direction.NORTH;
-
-      commandProcessor.executePlace(startPosition, startDirection);
-      String actual = commandProcessor.executeReport();
-
-      String expected = "Robot's current position and direction: " + robot.getPositionAndDirection();
-      assertEquals(expected,  actual);
-    }
   }
 
   @Nested
