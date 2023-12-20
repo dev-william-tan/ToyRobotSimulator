@@ -1,8 +1,9 @@
 package interfaces;
 
+import cli.CommandMap;
 import robot.Robot;
 
 public interface RobotState {
 
-  void ActiveCommands(Robot robot);
+  void doCommand(CommandMap commandMap, String commandKey);
 }

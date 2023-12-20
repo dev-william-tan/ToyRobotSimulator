@@ -2,6 +2,8 @@ package robot;
 
 import actions.Position;
 import actions.Direction;
+import commands.MoveCommand;
+import interfaces.Command;
 import interfaces.RobotState;
 import states.StartState;
 

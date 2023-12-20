@@ -1,23 +1,28 @@
 package cli;
 
 import actions.Direction;
+import actions.PlaceInput;
 import actions.Position;
 import grid.Grid;
+import interfaces.Command;
+import interfaces.RobotState;
+import java.util.Map;
 import java.util.Scanner;
 import robot.Robot;
+import states.StartState;
 
 public class CommandLineInterface {
 
   Scanner scanner = new Scanner(System.in);
   Robot robot = new Robot();
   Grid grid = new Grid(robot);
-  CommandProcessor command = new CommandProcessor(robot, grid);
 
   public void run() {
     System.out.println("Welcome to the Toy Robot Simulator!");
     System.out.println("To get started, first PLACE the robot on the grid!");
     System.out.println("To move the robot around and turning,use the commands.");
 
+    RobotState state = robot.getState();
     while (true) {
       System.out.println("Enter a command (PLACE, MOVE, LEFT, RIGHT, REPORT, HELP, or EXIT):");
       String input = scanner.nextLine().trim().toUpperCase();
@@ -26,39 +31,14 @@ public class CommandLineInterface {
         System.out.println("Exiting the robot simulator.");
         break;
       }
+      System.out.println("Current robot state: " + robot.getState().toString());
 
       try {
-        switch (input) {
-          case "PLACE" -> {
-            Position startPosition = getInputPosition(scanner);
-            Direction startDirection = getInputDirection(scanner);
-            command.executePlace(startPosition, startDirection);
-          }
-          case "MOVE" -> command.executeMove();
-          case "LEFT" -> command.executeLeft();
-          case "RIGHT" -> command.executeRight();
-          case "REPORT" -> command.executeReport();
-          case "HELP" -> command.executeHelp();
-          default -> System.out.println("Invalid command. Please try again.");
-        }
-      } catch (IllegalArgumentException e) {
-        System.out.println(e.getMessage());
+//start state - get input to place command
+          state.doCommand(new CommandMap(robot, grid), input);
+      } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
       }
     }
-  }
-
-  private Position getInputPosition(Scanner scanner) {
-    System.out.print("Enter X coordinate: ");
-    int x = scanner.nextInt();
-    System.out.print("Enter Y coordinate: ");
-    int y = scanner.nextInt();
-    return new Position(x,y);
-  }
-
-  private Direction getInputDirection(Scanner scanner) {
-    System.out.print("Enter direction (NORTH, EAST, SOUTH, WEST): ");
-    scanner.nextLine();
-    String directionStr = scanner.nextLine().trim().toUpperCase();
-    return Direction.valueOf(directionStr);
   }
 }

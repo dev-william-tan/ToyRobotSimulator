@@ -2,11 +2,7 @@ package grid;
 
 import actions.Position;
 
-import exceptions.NoDirectionException;
-import exceptions.NullCoordinatesException;
-import exceptions.PositionOutOfBoundsException;
 import robot.Robot;
-import actions.Direction;
 
 public class Grid {
 
@@ -22,5 +18,4 @@ public class Grid {
     return position.x() >= 0 && position.x() < GRID_WIDTH
         && position.y() >= 0 && position.y() < GRID_HEIGHT;
   }
-
 }
