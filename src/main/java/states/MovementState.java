@@ -11,7 +11,6 @@ public class MovementState implements RobotState {
       System.out.println("Place command not allowed in movement state");
     } else {
       commandMap.getCommand(commandKey).execute();
-      System.out.println("TESTING this is Movement State");
     }
   }
 }

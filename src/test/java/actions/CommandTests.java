@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import robot.Robot;
 
-public class CommandProcessorTest {
+public class CommandTests {
 
   private Robot robot;
   private Grid grid;
@@ -18,11 +18,13 @@ public class CommandProcessorTest {
   public void setUp() {
     robot = new Robot();
     grid = new Grid(robot);
+
   }
 
   @Nested
   @DisplayName("Positive Test for Commands")
   class PositiveTests {
+
   }
 
 }

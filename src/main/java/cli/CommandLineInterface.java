@@ -22,7 +22,6 @@ public class CommandLineInterface {
     System.out.println("To get started, first PLACE the robot on the grid!");
     System.out.println("To move the robot around and turning,use the commands.");
 
-    RobotState state = robot.getState();
     while (true) {
       System.out.println("Enter a command (PLACE, MOVE, LEFT, RIGHT, REPORT, HELP, or EXIT):");
       String input = scanner.nextLine().trim().toUpperCase();
@@ -35,7 +34,7 @@ public class CommandLineInterface {
 
       try {
 //start state - get input to place command
-          state.doCommand(new CommandMap(robot, grid), input);
+        robot.getState().doCommand(new CommandMap(robot, grid), input);
       } catch (Exception e) {
         System.out.println("Error: " + e.getMessage());
       }
