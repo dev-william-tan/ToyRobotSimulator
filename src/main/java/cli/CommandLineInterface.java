@@ -9,7 +9,6 @@ import interfaces.RobotState;
 import java.util.Map;
 import java.util.Scanner;
 import robot.Robot;
-import states.StartState;
 
 public class CommandLineInterface {
 
@@ -33,7 +32,6 @@ public class CommandLineInterface {
       System.out.println("Current robot state: " + robot.getState().toString());
 
       try {
-//start state - get input to place command
         robot.getState().doCommand(new CommandMap(robot, grid), input);
       } catch (Exception e) {
         System.out.println("Error: " + e.getMessage());

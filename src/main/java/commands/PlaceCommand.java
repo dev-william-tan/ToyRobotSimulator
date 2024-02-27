@@ -3,6 +3,7 @@ package commands;
 import actions.Direction;
 import actions.PlaceInput;
 import actions.Position;
+import grid.Grid;
 import interfaces.Command;
 import java.util.Scanner;
 import robot.Robot;
@@ -11,22 +12,29 @@ import states.MovementState;
 public class PlaceCommand implements Command {
 
   private final Robot robot;
+  private final Grid grid;
 
-  public PlaceCommand(Robot robot) {
+  public PlaceCommand(Robot robot, Grid grid) {
     this.robot = robot;
+    this.grid = grid;
   }
 
   @Override
-  public void execute() {
-    placeRobot();
+  public boolean execute() {
+    PlaceInput userInput = getUserInput();
+    return place(userInput.getPosition(), userInput.getDirection());
   }
 
-  private void placeRobot() {
-    PlaceInput userInput = getUserInput();
-    robot.setPosition(userInput.getPosition());
-    robot.setDirection(userInput.getDirection());
-    System.out.println("Placing the robot on: " + robot.getPositionAndDirection() );
-    robot.setState(new MovementState());
+  public boolean place(Position position, Direction direction) {
+    if (grid.isValidPosition(position)) {
+      robot.place(position.x(), position.y(), direction.name());
+      System.out.println("Placing the robot on: " + robot.getPositionAndDirection());
+      robot.setState(new MovementState());
+      return true;
+    } else {
+      System.out.println("Invalid Position, please enter valid coordinates");
+      return false;
+    }
   }
 
   //Get User input

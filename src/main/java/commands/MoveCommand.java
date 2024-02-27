@@ -18,11 +18,16 @@ public class MoveCommand implements Command {
   }
 
   @Override
-  public void execute() {
+  public boolean execute() {
     Position newPosition = robot.getDirection().moveForward(robot.getPosition());
 
-    System.out.println(grid.isValidPosition(newPosition)
-    ? updatePosition(newPosition) : OutOfBounds);
+    if (grid.isValidPosition(newPosition)){
+      updatePosition(newPosition);
+      return true;
+    } else {
+      System.out.println(OutOfBounds);
+      return false;
+    }
   }
 
   private String updatePosition(Position position) {

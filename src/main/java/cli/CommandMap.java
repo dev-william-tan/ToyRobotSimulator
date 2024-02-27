@@ -1,6 +1,5 @@
 package cli;
 
-import actions.PlaceInput;
 import commands.HelpCommand;
 import commands.MoveCommand;
 import commands.PlaceCommand;
@@ -22,7 +21,7 @@ public class CommandMap {
 
   private Map<String, Command> placedCommands(Robot robot, Grid grid) {
     Map<String, Command> map = new HashMap<>();
-    map.put("PLACE", new PlaceCommand(robot));
+    map.put("PLACE", new PlaceCommand(robot, grid));
     map.put("MOVE", new MoveCommand(robot, grid));
     map.put("LEFT", new TurnLeftCommand(robot));
     map.put("RIGHT", new TurnRightCommand(robot));
